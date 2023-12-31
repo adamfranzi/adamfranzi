@@ -66,3 +66,13 @@ sketches/
 
 # dotenv environment variables file
 .env
+
+# remove .DS_Store
+.DS_Store
+docs/.DS_Store
+docs/images/.DS_Store
+
+
+
+
+
