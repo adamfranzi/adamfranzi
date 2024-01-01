@@ -1,15 +1,13 @@
 var counter = 0;
 var right = 0;
 var questions = [
-    ["Where did Maya and Keshal meet?", "Spring break, Miami - cliché, we know", "At Columbia University, obviously", "Through a friend who set them up - Hi, Friend! You know who you are ;)", "In the one Anthropology class Keshal took while at Columbia. It was called 'Magic, Witchcraft and Religion'. He thought it 'sounded cool'.", "1"],
-    ["How long have they been together?", "6 years", "7 years", "8 years", "An eternity. Seriously, what took them so long?", "4"],
-    ["How long were they in a long distance relationship?", "They were in a long distance relationship??", "3 years", "4 years", "5 years", "4"],
-    ["Where did they get engaged?", "Miami, Florida - where it all began", "Lisbon, Portugal - Maya thought it was a vacation with Keshal's family", "Boston, Massachusetts - on a random Sunday, with Otis Redding on the record player, over brunch", "New York City, New York - it was a full on flash mob", "2"],
-    ["Who is the bride-zilla between the two?", "Keshal", "Maya", "1"],
-    ["What is their preferred term of endearment?", "Boo", "Babe", "Hon", "Dear", "1"],
-    ["Which of these is a nickname Maya has for Keshal?", "Schmoomoo", "Boo Radley", "KP", "Keshal Facial", "All of the above", "5"],
-    ["Which of these is a nickname Keshal has for Maya? ", "Clown", "Ma", "Booface", "Garfield", "All of the above", "5"],
-    ["Over the years, Maya and Keshal have had a lot of adventures together. What <i>haven't</i> they done together?", "Climbed a volcano", "Scuba dived in fresh water caves", "Taken a woodworking class", "Gone to a music festival", "All of the above", "3"]
+    ["What was our first conversation ever about?", "A trip to Poland - cliché, we know.", "Life in Toronto, obviously!", "Support Vector Machines - You know who we are and what we are working on ;)", "The NeurIPS Conference - Yes, you guessed it - we're total geeks ... ", "1"],
+    ["Where did we meet in person for the first time?", "Nicolas’ apartment during his birthday celebration. We do not use Keras!", "Queen’s Park on the Franzi’s welcome party!", "Stephan’s and Mohammad’s apartment during a game night.", "Vector Institute - yes we do work super hard.", "2"],
+    ["Who took our first-ever photo together (if we want to publish the photo we need to blur out everyone else)?", "Mohammad at Vector.", "Stephan during the trip to the Bruce Peninsula.", "Sierra at the lab retreat.", "Nicolas during the picnic in Queen’s Park.", "4"],
+    ["What was our first date?", "A half marathon along the waterfront of Lake Ontario. Adam, you do this workout but that much!", "Ice skating at the Bentway Skate Trail. Franzi wanted to show off.", "Aquarium in Toronto. This is a lovely place.", "Dinner at the George restaurant in Toronto. Highly recommended place!", "1"],
+    ["Who was the first to find out officially (that we know of) about us as a couple?", "Roy on his first day on the way to Vector in Queens Park.", "Nicolas in his office at Vector.", "Patty at Metro in College Park.", "Nick on the UofT Campus.", "2"],
+    ["Over which book did we realize and confess to each other that we’re in love? Which book triggered us to confess to each other that we’re in love?", "Harry Potter and the sorcerer’s stone.", "Getting things done!", "Obsessive Genius (The inner world of Marie Curie).", "Deep Learning by Ian Goodfellow.", "3"],
+    ["Why were Adam and Franzi called to a court together?", "Adam drove too fast in Mexico and caused an accident.", "They jaywalked near Eaton Center while trying to take photos for Nicolas’ calendar.", "Eating lunch by the river in the Niagara Glen Park.", "On the Australian border, they forgot to throw away some bananas brought from Canada.", "3"]
 ];
 
 $(document).ready(function () {
@@ -32,19 +30,19 @@ $(document).ready(function () {
     function nextQuestion() {
         document.getElementById("progress").value += 12 
         counter = counter + 1;
-        if (counter > 8) {
+        if (counter > 6) {
             $('#a1, #a2, #a3, #a4, #a5, #question').fadeOut("slow", function () {
-                if (right == 9){
-                    var result = $("<div id='question' class='field is-size-4'><strong class='has-text-success'>You got all " + right +"/9 right.</strong></br><div class='is-size-5'> Wow! You got them all right! There's no way you're not a stalker. Not that you need it, but scroll down to read the full story!</div></div>").hide();
+                if (right == 7){
+                    var result = $("<div id='question' class='field is-size-4'><strong class='has-text-success'>You got all " + right +"/7 right.</strong></br><div class='is-size-5'> Wow! You got them all right! There's no way you're not a stalker. Not that you need it, but scroll down to read the full story!</div></div>").hide();
                 }
-                else if (right >= 7){
-                    var result = $("<div id='question' class='field is-size-4'><strong class='has-text-success'>You got " + right +"/9 right.</strong></br><div class='is-size-5'> Pretty good! You must be quite close to Maya and Keshal... or you're a stalker. Scroll down for the full story!</div></div>").hide();
+                else if (right >= 5){
+                    var result = $("<div id='question' class='field is-size-4'><strong class='has-text-success'>You got " + right +"/7 right.</strong></br><div class='is-size-5'> Pretty good! You must be quite close to Adam and Franzi... or you're a stalker. Scroll down for the full story!</div></div>").hide();
                 }
-                else if (right < 7 && right >= 3){
-                    var result = $("<div id='question' class='field is-size-4'><strong class='orange'>You got " + right +"/9 right.</strong></br><div class='is-size-5'> You've got some work to do! Scroll down and read up...</div></div>").hide();
+                else if (right < 5 && right >= 3){
+                    var result = $("<div id='question' class='field is-size-4'><strong class='orange'>You got " + right +"/7 right.</strong></br><div class='is-size-5'> You've got some work to do! Scroll down and read up...</div></div>").hide();
                 }
                 else {
-                    var result = $("<div id='question' class='field is-size-4'><strong class='has-text-danger'>You got " + right +"/9 right.</strong></br><div class='is-size-5'> Wow you did terribly! Do you even know Maya and Keshal!? Scroll down and take notes...</div></div>").hide();
+                    var result = $("<div id='question' class='field is-size-4'><strong class='has-text-danger'>You got " + right +"/7 right.</strong></br><div class='is-size-5'> Wow you did terribly! Do you even know Maya and Keshal!? Scroll down and take notes...</div></div>").hide();
                 }
                 $('#couple-20').replaceWith('<div id="couple-20" class="column is-4 is-offset-1"><p class="title is-2 "><span class="rsvp-label">Your Results</span></p></div>');
                 $('#question').replaceWith(result);
@@ -59,7 +57,7 @@ $(document).ready(function () {
             $(".false").css("color", "black");
 
             $('#question').fadeOut("slow", function () {
-                var newQ = $("<div id='question' class='field'><strong>Question " + (counter + 1) + "/9</strong><label id='real-question' class='label is-size-5'>" + questions[counter][0] + "</label ></div >").hide();
+                var newQ = $("<div id='question' class='field'><strong>Question " + (counter + 1) + "/7</strong><label id='real-question' class='label is-size-5'>" + questions[counter][0] + "</label ></div >").hide();
                 $(this).replaceWith(newQ);
                 $('#question').fadeIn("slow");
             });
