@@ -9,6 +9,7 @@ var questions = [
     ["Over which book did we realize and confess to each other that we’re in love? Which book triggered us to confess to each other that we’re in love?", "Harry Potter and the sorcerer’s stone.", "Getting things done!", "Obsessive Genius (The inner world of Marie Curie).", "Deep Learning by Ian Goodfellow.", "3"],
     ["Why were Adam and Franzi called to a court together?", "Adam drove too fast in Mexico and caused an accident.", "They jaywalked near Eaton Center while trying to take photos for Nicolas’ calendar.", "Eating lunch by the river in the Niagara Glen Park.", "On the Australian border, they forgot to throw away some bananas brought from Canada.", "3"]
 ];
+nr_questions = questions.length
 
 $(document).ready(function () {
     $(document).on("click", ".true", function () {
@@ -28,21 +29,21 @@ $(document).ready(function () {
     });
 
     function nextQuestion() {
-        document.getElementById("progress").value += 12 
+        document.getElementById("progress").value += (100 / nr_questions)
         counter = counter + 1;
-        if (counter > 6) {
+        if (counter > (nr_questions - 1)) {
             $('#a1, #a2, #a3, #a4, #a5, #question').fadeOut("slow", function () {
-                if (right == 7){
+                if (right == nr_questions){
                     var result = $("<div id='question' class='field is-size-4'><strong class='has-text-success'>You got all " + right +"/7 right.</strong></br><div class='is-size-5'> Wow! You got them all right! There's no way you're not a stalker. Not that you need it, but scroll down to read the full story!</div></div>").hide();
                 }
-                else if (right >= 5){
+                else if (right > (nr_questions / 2)){
                     var result = $("<div id='question' class='field is-size-4'><strong class='has-text-success'>You got " + right +"/7 right.</strong></br><div class='is-size-5'> Pretty good! You must be quite close to Adam and Franzi... or you're a stalker. Scroll down for the full story!</div></div>").hide();
                 }
-                else if (right < 5 && right >= 3){
+                else if (right <= (nr_questions / 2) && right >= 1){
                     var result = $("<div id='question' class='field is-size-4'><strong class='orange'>You got " + right +"/7 right.</strong></br><div class='is-size-5'> You've got some work to do! Scroll down and read up...</div></div>").hide();
                 }
                 else {
-                    var result = $("<div id='question' class='field is-size-4'><strong class='has-text-danger'>You got " + right +"/7 right.</strong></br><div class='is-size-5'> Wow you did terribly! Do you even know Maya and Keshal!? Scroll down and take notes...</div></div>").hide();
+                    var result = $("<div id='question' class='field is-size-4'><strong class='has-text-danger'>You got " + right +"/7 right.</strong></br><div class='is-size-5'> Wow you did terribly! Do you even know Adam and Franzi!? Scroll down and take notes...</div></div>").hide();
                 }
                 $('#couple-20').replaceWith('<div id="couple-20" class="column is-4 is-offset-1"><p class="title is-2 "><span class="rsvp-label">Your Results</span></p></div>');
                 $('#question').replaceWith(result);
